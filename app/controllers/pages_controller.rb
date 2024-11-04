@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
 
   Options = ["rock", "paper", "scissors"]
-  Outcomes = {"rock"=> {"rock"=> "tie", "paper"=> "win", "scissors"=> "lose"},
-            "paper"=> {"rock"=> "lose", "paper"=> "tie", "scissors"=> "win"},
-            "scissors"=> {"rock"=> "win", "paper"=> "lose", "scissors"=> "tie"}}
+  Outcomes = {"rock"=> {"rock"=> "tied", "paper"=> "won", "scissors"=> "lost"},
+            "paper"=> {"rock"=> "lost", "paper"=> "tied", "scissors"=> "won"},
+            "scissors"=> {"rock"=> "won", "paper"=> "lost", "scissors"=> "tied"}}
 
   def home
     render({:template => "pages_templates/home"})
@@ -30,7 +30,6 @@ class PagesController < ApplicationController
   def scissors
     @our_choice = "scissors"
     @opponent_choice, @outcome = process_opponent_and_outcome(@our_choice)
-    puts @our_choice, @opponent_choice
     render({:template => "pages_templates/outcome"})
   end
 end
